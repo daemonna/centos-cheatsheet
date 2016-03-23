@@ -20,4 +20,6 @@ systemctl restart cockpit
 
 Login to cockpit
 
-go to localhost:9090
+```
+http://localhost:9090
+```
