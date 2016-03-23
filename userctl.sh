@@ -55,13 +55,13 @@ echo "--------------------------------------------------------------------------
 }
 
 
-useradd -Z user_u -s $shell -m -d $homedir -g $group $user
+useradd -Z user_u -s $shell -m -d $homedir -g $group $username
 cd $homedir
-su $user
+su $username
 ssh-keygen -t ecdsa -q -N ""
 semanage login -a -s user_u
-semanage fcontext -a -t ssh_home_t /home/$user/.ssh/
-restorecon -v /home/$user/.ssh/
+semanage fcontext -a -t ssh_home_t /home/$username/.ssh/
+restorecon -v /home/$username/.ssh/
 
 
 # MAIN ######################################################################
@@ -69,29 +69,15 @@ restorecon -v /home/$user/.ssh/
 
 
 case "$1" in
-start)
+add)
         tc_start
         ;;
-printtree) print_tree
-        ;;
-printtc) print_tc_tree
-        ;;
-generatetc) generate_file $2
-	;;
-stop)   tc_remove
+del)    userdel -r $username
+	echo "user deleted..."
         ;;        
-restart) tc_remove
-        tc_start
+update)
+        echo -e "${GREEN}= scanning for updates =========================================${NONE}";
         ;;
-
-status)
-        echo -e "${GREEN}= IPSET =========================================${NONE}";
-        ipset -L;
-        echo -e "${GREEN}= IPTABLES ======================================${NONE}";
-        iptables -L -n -v --line-numbers;
-	tc_print_counters
-        ;;
-
 version)
         print_banner
         ;;
