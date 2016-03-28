@@ -16,6 +16,12 @@ firewall-cmd --set-default-zone=public
 
 firewall-cmd --zone=public --add-masquerade
 
+redirect ssh to other VMs
+
+firewall-cmd --zone=external --add-forward-port=port=22:proto=tcp:toaddr=192.0.2.55
+
+firewall-cmd --zone=external --add-forward-port=port=22:proto=tcp:toport=2055:toaddr=192.0.2.55
+
 ## Set ZONES
 
 Reboot your gateway and after it comes back to life run the following command to see if zones were assigned correctly.
