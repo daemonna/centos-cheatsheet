@@ -17,6 +17,11 @@ Create the .autorelabel file in root's home directory to ensure that files are r
 ```
 touch /.autorelabel
 ```
+| Searching For  | Command |
+| ------------- | ------------- |
+| all denials  | ausearch -m avc  |
+| denials for that today  | ausearch -m avc -ts today  |
+| denials from the last 10 minutes  | ausearch -m avc -ts recent  |
 
 If there were no denial messages in **/var/log/messages** (or using `ausearch -m avc`), or you have resolved all existing denials, configure SELINUX=enforcing in the /etc/selinux/config file
 
