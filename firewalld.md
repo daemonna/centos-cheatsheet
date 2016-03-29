@@ -22,6 +22,8 @@ firewall-cmd --zone=external --add-forward-port=port=22:proto=tcp:toaddr=192.0.2
 
 firewall-cmd --zone=external --add-forward-port=port=22:proto=tcp:toport=2055:toaddr=192.0.2.55
 
+firewall-cmd --add-rich-rule='rule family="ipv4" source address="192.168.1.100/25" service name="ssh" reject'
+
 ## Set ZONES
 
 Reboot your gateway and after it comes back to life run the following command to see if zones were assigned correctly.
