@@ -18,7 +18,7 @@ Create the .autorelabel file in root's home directory to ensure that files are r
 touch /.autorelabel
 ```
 
-If there were no denial messages in **/var/log/messages**, or you have resolved all existing denials, configure SELINUX=enforcing in the /etc/selinux/config file
+If there were no denial messages in **/var/log/messages** (or using `ausearch -m avc`), or you have resolved all existing denials, configure SELINUX=enforcing in the /etc/selinux/config file
 
 ```
 SELINUX=enforcing
